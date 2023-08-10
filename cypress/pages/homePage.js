@@ -1,14 +1,18 @@
-export default class Practise{
+export default class homePage{
     visit(){
-        cy.visit("/")
+        cy.visit("/") //Visit the base URL that has been added in cypress.config file
     }
-    userName(number){
+    viewPort(string){
        
        
-        return cy.get('#username').type(number);
+        return cy.viewport(window.screen.width, window.screen.height); //use to maximize the window according to your resolution
         
     }
-    password(text){
-        return cy.get('#passowrd').type(text)
+    selectDropdown(text){
+        return cy.get("select").as('listSelect'); //It will select the dropdown value
+        
+    }
+    searchButton(string){
+        return cy.get('#nav-search-submit-button').as('btn')
     }
 }
