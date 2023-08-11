@@ -24,8 +24,19 @@ describe('Amazon Home Page', () => {
 
                 // this will click the random dropdown value generated from the randomSelect     
                 cy.get('@listSelect').select(randomSelect,{force: true}) 
-        })   
-             //It will click the search Icon
-        amazonHome.searchButton().click(); 
+
+
+                //this will show what value is selected and print in cypress console
+                cy.get('#nav-search-label-id').as('valueSelected')       
+                cy.get('@valueSelected').then(($element) => {
+                    const listValue = $element.text();
+                    cy.log('The Category Selected is ' + listValue);
+                });
+
+                //It will click the search Icon
+                amazonHome.searchButton().click(); 
+        
+            })   
+        
     });
 });

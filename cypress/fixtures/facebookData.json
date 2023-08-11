@@ -1,0 +1,24 @@
+[
+    {
+        "name" : "Verify if a user will be able to login with a valid username and valid password.",
+        "testType" : "Positive Test Case",
+        "username": "valid@gmail.com",
+        "password": "password@123",
+        "expectedMessage": "Return home"
+    },
+    {
+        "name" : "Verify if a user should not be able to login with a valid username and an invalid password.",
+        "testType" : "Negative Test Case",
+        "username": "valid@gmail.com",
+        "password": "password@123",
+        "expectedMessage": "Return home"
+    },
+    {
+        "name" : "Verify if a user should not be able to login with a invalid username and an invalid password",
+        "testType" : "Negative Test Case",
+        "username": "invalid@gmail.com",
+        "password": "password@123456",
+        "expectedMessage": "Return home"
+    }
+
+]

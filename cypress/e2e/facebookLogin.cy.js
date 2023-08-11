@@ -1,19 +1,47 @@
 import loginPage from '../pages/facebookLogin'
-const loginObj = new loginPage();
-describe('POM Test', () => {
+const pageObject = new loginPage();
+const tests = require('../fixtures/facebookData.json')
 
- beforeEach(function() {
-   // executes prior each test within it block
-   cy.visit('www.facebook.com');
+
+
+
+beforeEach(function() {
+  // executes this test each time "it" block runs
+    pageObject.visit();
 
 })
+describe('POM Test', () => {
 
- it('Verify Login Successful With Correct Credentials', () => {
-   
-   loginObj.username.type('johndoe1998@yopmail.com')
-   loginObj.password.type('Test@assessment')
-   loginObj.submit.click();
- 
-//    loginObj.successText.should('have.text','Login Successfully');
- })
+          it('Verify that the Facebook login page will be shown', () => {
+
+            //this will bet the button attribute and if the login page is loaded or shown , and print the result output in cypress log
+            pageObject.submit.then($element => {
+              if ($element.attr('type') === 'submit') {
+                cy.log("Facebook Login Page is Successfully Shown")
+              } else {
+                cy.log("Error on showing Facebook Login Page")
+              } 
+            });
+        });
+
+        tests.forEach(test => {
+          it(test.name, () => {
+            
+              // To minimize the "it" test block what i did is, I create a Page Object Model and Pass that model with the json array (facebookData.json), so that we dont have to create new it block every time,
+              // we just need to create a new object in json so that it will be easier and effecient
+
+                    pageObject.username.type(test.username) 
+
+                    pageObject.password.type(test.password)
+
+                    cy.log("The Test Type is :" + test.testType)
+
+                    pageObject.submit.click();
+
+                    pageObject.successText.should('have.text',test.expectedMessage);
+
+
+          })
+        })
+
 })

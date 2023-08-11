@@ -1,6 +1,6 @@
 export default class loginPage{
 
-    get visit()
+    visit(string)
     {
        return cy.visit('https://www.facebook.com/');
     }
@@ -21,12 +21,12 @@ export default class loginPage{
  
    get successText()
     {
-        return cy.get('h3');
+        return cy.get('div[class="fcb"]');
     }
  
     get errorText()
     {
-        return cy.get('span');
+        return cy.get('errorMessages');
     }
  
  }
