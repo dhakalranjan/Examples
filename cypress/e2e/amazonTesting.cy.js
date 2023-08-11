@@ -5,9 +5,12 @@ const amazonHome = new homePage();
 describe('Amazon Home Page', () => {
     it.only('Select Random Value From DropDown', () => {
 
+        amazonHome.visit();
+
+        
         amazonHome.viewPort();
 
-        amazonHome.visit();
+        cy.url().should("include", "https://www.amazon.com/")
 
         const selectSelector = 'select'; 
         cy.get(selectSelector).find('option').then(($value) => {
