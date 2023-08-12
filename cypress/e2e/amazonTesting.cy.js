@@ -28,6 +28,7 @@ describe('Amazon Home Page', () => {
                 // this will click the random dropdown value generated from the randomSelect     
                 cy.get('@listSelect').select(randomSelect,{force: true}) 
 
+               
 
                 //this will show what value is selected and print in cypress console
                 cy.get('#nav-search-label-id').as('valueSelected')       
@@ -38,7 +39,10 @@ describe('Amazon Home Page', () => {
 
                 //It will click the search Icon
                 amazonHome.searchButton().click(); 
-        
+
+                // It will take the screenshot of the final random category page and store in ...cypress/screenshots folder
+
+                // amazonHome.screenshot(); since it takes more run time, I have commented this for now
             })   
         
     });

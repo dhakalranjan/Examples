@@ -3,9 +3,7 @@ export default class homePage{
         cy.visit("/") //Visit the base URL that has been added in cypress.config file
     }
     viewPort(string){
-       
-       
-        return cy.viewport(window.screen.width, window.screen.height); //use to maximize the window according to your resolution
+       return cy.viewport(window.screen.width, window.screen.height); //use to maximize the window according to your resolution
         
     }
     selectDropdown(){
@@ -13,7 +11,10 @@ export default class homePage{
         
     }
     searchButton(string){
-        return cy.get('#nav-search-submit-button').as('btn')
+        return cy.get('#nav-search-submit-button').as('btn') //It is the search button
+    }
+    screenshot(){
+        cy.screenshot()
     }
     
 }
