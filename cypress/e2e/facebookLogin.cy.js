@@ -14,7 +14,7 @@ describe('POM Test', () => {
 
           it('Verify that the Facebook login page will be shown', () => {
 
-            //this will bet the button attribute and if the login page is loaded or shown , and print the result output in cypress log
+            //this will get the button attribute and if the login page is loaded or shown ,it will print the result output in cypress log
             pageObject.submit.then($element => {
               if ($element.attr('type') === 'submit') {
                 cy.log("Facebook Login Page is Successfully Shown")
@@ -27,8 +27,8 @@ describe('POM Test', () => {
         tests.forEach(test => {
           it(test.name, () => {
             
-              // To minimize the "it" test block what i did is, I create a Page Object Model and Pass that model with the json array (facebookData.json), so that we dont have to create new it block every time,
-              // we just need to create a new object in json so that it will be easier and effecient
+              // To minimize the "it" block what i did is, I create a Page Object Model and Pass that model with the json array (facebookData.json), so that we dont have to create new "it" block every time,
+              // we just need to create a new object in json so that it will be easier and effecient.
 
                     pageObject.username.type(test.username) 
 
